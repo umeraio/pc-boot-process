@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boot Journey - Visual Roadmap</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Boot Journey Home">
+        <div class="logo">🧩</div>
+        <div>Boot Journey</div>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a data-nav href="index.html">Roadmap</a>
+        <a data-nav href="bios-uefi.html">BIOS/UEFI</a>
+        <a data-nav href="tpm.html">TPM</a>
+        <a data-nav href="bootloader.html">Boot Loader</a>
+        <a data-nav href="kernel.html">Kernel</a>
+        <a data-nav href="kernel-types.html">Kernel Types</a>
+        <a data-nav href="os-basics.html">OS Basics</a>
+        <a data-nav href="windows-boot.html">Windows Boot</a>
+        <a data-nav href="glossary.html">Glossary</a>
+        <a data-nav href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb" data-breadcrumb></div>
+
+    <section class="hero">
+      <div class="card">
+        <p class="kicker">Visual roadmap</p>
+        <h1 class="h1">How a computer starts (boot) - step by step</h1>
+        <p class="lead">
+          Think of booting like a relay race. Each part hands control to the next part until you get a usable system.
+          Click a stage below to learn it with visuals and simple examples.
+        </p>
+
+        <div class="badges" aria-label="Color legend">
+          <span class="tag"><span class="dot hw"></span>Hardware</span>
+          <span class="tag"><span class="dot fw"></span>Firmware (BIOS/UEFI)</span>
+          <span class="tag"><span class="dot bl"></span>Boot Loader</span>
+          <span class="tag"><span class="dot k"></span>Kernel</span>
+          <span class="tag"><span class="dot os"></span>Operating System</span>
+          <span class="tag"><span class="dot user"></span>You (apps + login)</span>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="roadmap" aria-label="Boot sequence roadmap">
+          <a class="stage" href="os-basics.html" aria-label="Start with OS basics">
+            <div class="chip">Start here</div>
+            <div style="font-size:28px;">🖥️</div>
+            <div class="label">Operating System Basics</div>
+            <div class="mini">What an OS is and what it does</div>
+          </a>
+
+          <span class="arrow">➡️</span>
+
+          <a class="stage" href="bios-uefi.html" aria-label="Go to BIOS and UEFI">
+            <div class="chip" style="border-color: rgba(96,165,250,0.5);">Firmware</div>
+            <div style="font-size:28px;">🧠</div>
+            <div class="label">BIOS / UEFI</div>
+            <div class="mini">First code that runs after power-on</div>
+          </a>
+
+          <span class="arrow">➡️</span>
+
+          <a class="stage" href="tpm.html" aria-label="Go to TPM">
+            <div class="chip" style="border-color: rgba(255,255,255,0.22);">Security</div>
+            <div style="font-size:28px;">🔒</div>
+            <div class="label">TPM</div>
+            <div class="mini">Trust chip that helps protect keys</div>
+          </a>
+
+          <span class="arrow">➡️</span>
+
+          <a class="stage" href="bootloader.html" aria-label="Go to Boot Loader">
+            <div class="chip" style="border-color: rgba(167,139,250,0.5);">Loader</div>
+            <div style="font-size:28px;">🚀</div>
+            <div class="label">Boot Loader</div>
+            <div class="mini">Chooses OS and loads the kernel</div>
+          </a>
+
+          <span class="arrow">➡️</span>
+
+          <a class="stage" href="kernel.html" aria-label="Go to Kernel">
+            <div class="chip" style="border-color: rgba(52,211,153,0.5);">Core</div>
+            <div style="font-size:28px;">⚙️</div>
+            <div class="label">Kernel</div>
+            <div class="mini">Controls CPU, memory, devices, processes</div>
+          </a>
+        </div>
+      </div>
+
+      <aside class="card">
+        <p class="kicker">Clickable mini-diagram</p>
+        <h2 class="h2">Tap a box to see what it means</h2>
+
+        <div class="diagram" role="group" aria-label="Clickable boot diagram">
+          <div class="diagram-grid">
+            <div class="node" data-pop-title="Power On ⚡"
+                 data-pop-text="Electric power reaches the motherboard. The CPU resets and starts from a fixed starting point."
+                 aria-label="Power On node">
+              <div class="title">⚡ Power On</div>
+              <div class="sub">Electricity + CPU reset</div>
+            </div>
+
+            <div class="node" data-pop-title="BIOS / UEFI 🧠"
+                 data-pop-text="Firmware stored on the motherboard. It checks hardware (basic tests) and finds a boot option."
+                 aria-label="BIOS UEFI node">
+              <div class="title">🧠 BIOS/UEFI</div>
+              <div class="sub">Firmware starts first</div>
+            </div>
+
+            <div class="node" data-pop-title="Boot Loader 🚀"
+                 data-pop-text="A small program that loads the operating system’s kernel into memory and starts it."
+                 aria-label="Boot Loader node">
+              <div class="title">🚀 Boot Loader</div>
+              <div class="sub">Loads the kernel</div>
+            </div>
+
+            <div class="node" data-pop-title="Kernel ⚙️"
+                 data-pop-text="The core manager. It controls CPU time, memory, devices, and starts system services."
+                 aria-label="Kernel node">
+              <div class="title">⚙️ Kernel</div>
+              <div class="sub">Core control</div>
+            </div>
+
+            <div class="node" data-pop-title="Operating System 🖥️"
+                 data-pop-text="The full system: drivers, services, user interface, apps. You can log in and use programs."
+                 aria-label="Operating System node">
+              <div class="title">🖥️ OS</div>
+              <div class="sub">Usable computer</div>
+            </div>
+
+            <div class="node" data-pop-title="You + Apps 😊"
+                 data-pop-text="Login screen appears. You open apps. The OS and kernel keep everything running."
+                 aria-label="User node">
+              <div class="title">😊 You</div>
+              <div class="sub">Apps and work</div>
+            </div>
+          </div>
+
+          <div class="pop" data-pop aria-live="polite"></div>
+          <div class="hint">Tip: this site is built so you can click, hover, and learn in small steps.</div>
+        </div>
+
+        <hr class="sep" />
+
+        <p class="kicker">Learning path</p>
+        <ol class="list">
+          <li>Start with <a href="os-basics.html" style="text-decoration: underline;">OS Basics</a></li>
+          <li>Then follow the boot order: BIOS/UEFI → TPM → Boot Loader → Kernel</li>
+          <li>Finish with Windows Boot + quiz</li>
+        </ol>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <div class="card col-6">
+        <p class="kicker">Beginner rule</p>
+        <h2 class="h2">Every hard idea has 3 parts</h2>
+        <ul class="list">
+          <li><b>Text:</b> short and simple explanation</li>
+          <li><b>Visual:</b> diagram you can click</li>
+          <li><b>Example:</b> a real world analogy</li>
+        </ul>
+      </div>
+
+      <div class="card col-6">
+        <p class="kicker">Quick analogy</p>
+        <h2 class="h2">Booting is like opening a shop</h2>
+        <ul class="list">
+          <li>⚡ Power: lights turn on</li>
+          <li>🧠 Firmware: checks locks + tools</li>
+          <li>🚀 Boot loader: chooses today’s plan</li>
+          <li>⚙️ Kernel: manager gives tasks</li>
+          <li>🖥️ OS: staff + systems are running</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="footer">
+      Built for zero-knowledge learners - click, hover, explore. ✅
+    </div>
+  </main>
+
+  <script>
+    window.BC = [{label:"Home", href:"index.html"}];
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

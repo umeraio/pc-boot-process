@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boot Journey - Operating System Basics</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><div class="logo">🧩</div><div>Boot Journey</div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a data-nav href="index.html">Roadmap</a>
+        <a data-nav href="bios-uefi.html">BIOS/UEFI</a>
+        <a data-nav href="tpm.html">TPM</a>
+        <a data-nav href="bootloader.html">Boot Loader</a>
+        <a data-nav href="kernel.html">Kernel</a>
+        <a data-nav href="kernel-types.html">Kernel Types</a>
+        <a data-nav href="os-basics.html">OS Basics</a>
+        <a data-nav href="windows-boot.html">Windows Boot</a>
+        <a data-nav href="glossary.html">Glossary</a>
+        <a data-nav href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb" data-breadcrumb></div>
+
+    <section class="card">
+      <p class="kicker">Start here 🖥️</p>
+      <h1 class="h1">What is an Operating System (OS)?</h1>
+      <p class="lead">
+        An OS is the “big helper” that makes a computer usable. It manages hardware, runs programs, and gives you a user interface.
+      </p>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Layered diagram (required)</h2>
+      <div class="diagram">
+        <div class="card" style="background: rgba(255,255,255,0.04); border-radius: 16px; border: 1px solid var(--line);">
+          <div class="badges">
+            <span class="tag"><span class="dot user"></span>User</span>
+            <span class="tag"><span class="dot os"></span>Operating System</span>
+            <span class="tag"><span class="dot hw"></span>Hardware</span>
+          </div>
+
+          <table class="table" aria-label="User OS Hardware layers">
+            <tbody>
+              <tr><td><b>😊 User</b></td><td>You click, type, and open apps.</td></tr>
+              <tr><td><b>🖥️ Operating System</b></td><td>Runs apps, manages files, drivers, network, and security.</td></tr>
+              <tr><td><b>⚡ Hardware</b></td><td>CPU, memory, disk, keyboard, screen, Wi-Fi.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hint">The OS sits between you and the hardware.</div>
+      </div>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Core OS functions (simple list)</h2>
+      <div class="grid">
+        <div class="col-6">
+          <ul class="list">
+            <li><b>Process management</b>: runs many programs</li>
+            <li><b>Memory management</b>: gives RAM to programs safely</li>
+            <li><b>File systems</b>: stores files in folders</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul class="list">
+            <li><b>Device drivers</b>: talks to keyboard, disk, Wi-Fi</li>
+            <li><b>User interface</b>: windows, icons, terminal</li>
+            <li><b>Security</b>: permissions and isolation</li>
+          </ul>
+        </div>
+      </div>
+
+      <details class="expander">
+        <summary>Click to learn more (easy analogy) <span class="chev">▼</span></summary>
+        <div class="content">
+          The OS is like a hotel:
+          <ul class="list">
+            <li>Rooms = memory space for programs</li>
+            <li>Reception = user interface</li>
+            <li>Staff = services and drivers</li>
+            <li>Rules = security and permissions</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="btnrow">
+        <a class="btn" href="bios-uefi.html">Next: BIOS/UEFI 🧠</a>
+        <a class="btn" href="index.html">Back: Roadmap</a>
+      </div>
+    </section>
+
+    <div class="footer">OS basics first. Then follow the boot chain.</div>
+  </main>
+
+  <script>
+    window.BC = [
+      {label:"Home", href:"index.html"},
+      {label:"OS Basics"}
+    ];
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

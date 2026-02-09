@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boot Journey - Kernel</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><div class="logo">🧩</div><div>Boot Journey</div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a data-nav href="index.html">Roadmap</a>
+        <a data-nav href="bios-uefi.html">BIOS/UEFI</a>
+        <a data-nav href="tpm.html">TPM</a>
+        <a data-nav href="bootloader.html">Boot Loader</a>
+        <a data-nav href="kernel.html">Kernel</a>
+        <a data-nav href="kernel-types.html">Kernel Types</a>
+        <a data-nav href="os-basics.html">OS Basics</a>
+        <a data-nav href="windows-boot.html">Windows Boot</a>
+        <a data-nav href="glossary.html">Glossary</a>
+        <a data-nav href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb" data-breadcrumb></div>
+
+    <section class="card">
+      <p class="kicker">Core focus ⚙️</p>
+      <h1 class="h1">Kernel (the core manager)</h1>
+      <p class="lead">
+        The kernel is the core part of an operating system. It sits between apps and hardware and controls the “most important jobs”.
+      </p>
+
+      <hr class="sep" />
+
+      <div class="grid">
+        <div class="col-6">
+          <h2 class="h2">Simple analogy</h2>
+          <p>
+            The kernel is like a <b>traffic controller</b> for the whole computer:
+          </p>
+          <ul class="list">
+            <li>🚦 decides which program uses the CPU next</li>
+            <li>🧠 decides where data lives in memory</li>
+            <li>🔌 talks to devices (keyboard, disk, Wi-Fi)</li>
+            <li>🧑‍🤝‍🧑 keeps programs separate so one can’t easily break another</li>
+          </ul>
+        </div>
+
+        <div class="col-6">
+          <h2 class="h2">What the kernel controls</h2>
+          <ul class="list">
+            <li><b>CPU</b>: time-sharing between tasks (processes)</li>
+            <li><b>Memory</b>: who gets RAM, and protection</li>
+            <li><b>Devices</b>: drivers for disk, network, USB, etc.</li>
+            <li><b>Processes</b>: starting, stopping, scheduling</li>
+          </ul>
+          <p style="color: var(--muted); margin: 10px 0 0;">
+            Hover: <span class="has-tip" data-tip="A running program. For example: your browser, music player, or system service.">process</span>,
+            <span class="has-tip" data-tip="A small helper that lets the OS talk to hardware like Wi-Fi or the disk.">driver</span>.
+          </p>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Layer diagram (who talks to who)</h2>
+      <div class="diagram" aria-label="OS layer diagram">
+        <table class="table" aria-label="Layered view">
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>What it is</th>
+              <th>Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>😊 User + Apps</td>
+              <td>You click things. Apps request services.</td>
+              <td><span class="tag"><span class="dot user"></span>User</span></td>
+            </tr>
+            <tr>
+              <td>🖥️ Operating System</td>
+              <td>UI, services, file tools, networking tools.</td>
+              <td><span class="tag"><span class="dot os"></span>OS</span></td>
+            </tr>
+            <tr>
+              <td>⚙️ Kernel</td>
+              <td>Controls CPU, memory, devices, processes.</td>
+              <td><span class="tag"><span class="dot k"></span>Kernel</span></td>
+            </tr>
+            <tr>
+              <td>🧠 Firmware + ⚡ Hardware</td>
+              <td>Motherboard firmware and physical parts.</td>
+              <td>
+                <span class="tag"><span class="dot fw"></span>Firmware</span>
+                <span class="tag"><span class="dot hw"></span>Hardware</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="hint">Kernel is the “bridge” between software and hardware.</div>
+      </div>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Step-by-step: what happens when kernel starts</h2>
+      <div
+        class="stepper"
+        data-stepper
+        data-steps='[
+          {"title":"Kernel is loaded into RAM","text":"Boot loader places the kernel in memory and jumps to its start point."},
+          {"title":"Kernel sets up CPU + memory rules","text":"It prepares scheduling and memory protection so programs can run safely."},
+          {"title":"Kernel loads essential drivers","text":"It loads drivers for disk, keyboard, display, and other devices."},
+          {"title":"Kernel starts core services","text":"It starts system services (like networking or logging) needed for the OS."},
+          {"title":"Login and user space starts","text":"Now you can see a login screen and run apps on top of the OS."}
+        ]'
+        aria-label="Kernel startup stepper"
+      ></div>
+
+      <hr class="sep" />
+
+      <div class="btnrow">
+        <a class="btn" href="kernel-types.html">Next: Types of Kernels 🧱</a>
+        <a class="btn" href="bootloader.html">Back: Boot Loader 🚀</a>
+      </div>
+    </section>
+
+    <div class="footer">Kernel is the core manager. Next: different kernel designs 🧱</div>
+  </main>
+
+  <script>
+    window.BC = [
+      {label:"Home", href:"index.html"},
+      {label:"BIOS / UEFI", href:"bios-uefi.html"},
+      {label:"TPM", href:"tpm.html"},
+      {label:"Boot Loader", href:"bootloader.html"},
+      {label:"Kernel"}
+    ];
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

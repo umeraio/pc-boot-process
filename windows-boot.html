@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boot Journey - Windows Boot Process</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<!-- ===================== TOP NAV ===================== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <div class="logo">🧩</div>
+      <div>Boot Journey</div>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a data-nav href="index.html">Roadmap</a>
+      <a data-nav href="bios-uefi.html">BIOS/UEFI</a>
+      <a data-nav href="tpm.html">TPM</a>
+      <a data-nav href="bootloader.html">Boot Loader</a>
+      <a data-nav href="kernel.html">Kernel</a>
+      <a data-nav href="kernel-types.html">Kernel Types</a>
+      <a data-nav href="os-basics.html">OS Basics</a>
+      <a data-nav href="windows-boot.html">Windows Boot</a>
+      <a data-nav href="glossary.html">Glossary</a>
+      <a data-nav href="quiz.html">Quiz</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<main class="container">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb" data-breadcrumb></div>
+
+  <!-- ===================== INTRO CARD ===================== -->
+  <section class="card">
+    <p class="kicker">Windows Boot Process 🪟</p>
+    <h1 class="h1">How Windows Boots (Power Button → Login Screen)</h1>
+
+    <p class="lead">
+      This page visually explains how Windows starts, step by step.
+      You will see <b>where control moves</b> and <b>which files are loaded</b>
+      from <b>UEFI</b> all the way to the <b>final login screen</b>.
+    </p>
+
+    <div class="badges">
+      <span class="tag"><span class="dot hw"></span>Hardware</span>
+      <span class="tag"><span class="dot fw"></span>Firmware</span>
+      <span class="tag"><span class="dot bl"></span>Boot Loader</span>
+      <span class="tag"><span class="dot k"></span>Kernel</span>
+      <span class="tag"><span class="dot os"></span>Operating System</span>
+      <span class="tag"><span class="dot user"></span>User</span>
+    </div>
+
+    <hr class="sep" />
+
+    <!-- ===================== STATIC OVERVIEW ===================== -->
+    <h2 class="h2">High-level Windows boot flow</h2>
+    <p style="color: var(--muted); margin-top:0;">
+      Before the animation, here is the logical order:
+    </p>
+
+    <ol class="list">
+      <li>⚡ Power button is pressed</li>
+      <li>🧠 UEFI firmware runs from motherboard</li>
+      <li>🚀 Windows Boot Manager starts from ESP</li>
+      <li>📋 Boot Configuration Data (BCD) is read</li>
+      <li>📦 Windows OS Loader loads kernel files</li>
+      <li>⚙️ Kernel takes control</li>
+      <li>🧑‍🔧 System services start</li>
+      <li>😊 Login screen appears</li>
+    </ol>
+
+    <hr class="sep" />
+
+    <!-- ===================== INTERACTIVE TIMELINE ===================== -->
+    <h2 class="h2">Interactive Windows Boot Timeline (Disk → RAM)</h2>
+    <p style="color: var(--muted); margin-top:0;">
+      Drag the slider or press <b>Auto</b>.
+      Watch how Windows loads files from the <b>EFI System Partition</b> and
+      <b>Windows partition</b> into <b>RAM</b>.
+    </p>
+
+    <!-- 🔴 THIS IS THE REQUIRED MOUNT POINT -->
+    <section data-win-timeline-visual></section>
+
+    <hr class="sep" />
+
+    <!-- ===================== LEARNING NOTES ===================== -->
+    <h2 class="h2">Key learning points</h2>
+    <ul class="list">
+      <li>UEFI does <b>not</b> load Windows directly</li>
+      <li>Boot Manager lives in the <b>EFI System Partition (ESP)</b></li>
+      <li>The kernel (<code>ntoskrnl.exe</code>) is loaded <b>before</b> login</li>
+      <li>Once the kernel runs, firmware and boot loader are finished</li>
+      <li>Everything you see after login runs on top of the kernel</li>
+    </ul>
+
+    <hr class="sep" />
+
+    <!-- ===================== NAV BUTTONS ===================== -->
+    <div class="btnrow">
+      <a class="btn" href="kernel-types.html">⬅ Back: Kernel Types</a>
+      <a class="btn" href="quiz.html">Next: Quiz ✅</a>
+    </div>
+  </section>
+
+  <div class="footer">
+    Windows boot is a chain of trust and control — not a single jump.  
+    If you understand this page, you understand modern PC startup.
+  </div>
+
+</main>
+
+<!-- ===================== BREADCRUMB CONFIG ===================== -->
+<script>
+  window.BC = [
+    {label:"Home", href:"index.html"},
+    {label:"Kernel Types", href:"kernel-types.html"},
+    {label:"Windows Boot"}
+  ];
+</script>
+
+<!-- ===================== MAIN JS ===================== -->
+<script src="assets/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boot Journey - Types of Kernels</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><div class="logo">🧩</div><div>Boot Journey</div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a data-nav href="index.html">Roadmap</a>
+        <a data-nav href="bios-uefi.html">BIOS/UEFI</a>
+        <a data-nav href="tpm.html">TPM</a>
+        <a data-nav href="bootloader.html">Boot Loader</a>
+        <a data-nav href="kernel.html">Kernel</a>
+        <a data-nav href="kernel-types.html">Kernel Types</a>
+        <a data-nav href="os-basics.html">OS Basics</a>
+        <a data-nav href="windows-boot.html">Windows Boot</a>
+        <a data-nav href="glossary.html">Glossary</a>
+        <a data-nav href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb" data-breadcrumb></div>
+
+    <section class="card">
+      <p class="kicker">Kernel designs 🧱</p>
+      <h1 class="h1">Types of kernels (with simple diagrams)</h1>
+      <p class="lead">
+        Kernels can be built in different ways. This changes performance, safety, and how boot and drivers are handled.
+        Click each section and explore.
+      </p>
+
+      <hr class="sep" />
+
+      <!-- Monolithic -->
+      <details class="expander" open>
+        <summary>1) Monolithic kernel (Linux) 🧱 <span class="chev">▼</span></summary>
+        <div class="content">
+          <p><b>Simple definition:</b> Many services (drivers, file systems, networking) run inside one big kernel space.</p>
+
+          <div class="diagram">
+            <div class="diagram-grid">
+              <div class="node" data-pop-title="Apps 😊"
+                   data-pop-text="Apps request services from the OS (through system calls)."
+                   style="border-left: 5px solid var(--user);">
+                <div class="title">😊 Apps</div><div class="sub">User space</div>
+              </div>
+              <div class="node" data-pop-title="Monolithic kernel ⚙️"
+                   data-pop-text="Most core services live inside the kernel. Fast calls, but larger trusted code."
+                   style="border-left: 5px solid var(--k);">
+                <div class="title">⚙️ One big kernel</div><div class="sub">Drivers + FS + Network inside</div>
+              </div>
+              <div class="node" data-pop-title="Hardware ⚡"
+                   data-pop-text="CPU, RAM, disk, devices."
+                   style="border-left: 5px solid var(--hw);">
+                <div class="title">⚡ Hardware</div><div class="sub">Physical parts</div>
+              </div>
+            </div>
+            <div class="pop" data-pop aria-live="polite"></div>
+            <div class="hint">Monolithic = “big kernel space”. Often fast and practical.</div>
+          </div>
+
+          <table class="table" aria-label="Monolithic strengths weaknesses">
+            <thead><tr><th>Strengths ✅</th><th>Weaknesses ⚠️</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul class="list">
+                    <li>Fast (many calls stay inside kernel)</li>
+                    <li>Common and well-tested</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="list">
+                    <li>Large trusted code area</li>
+                    <li>A buggy driver can crash the system</li>
+                  </ul>
+                </td>
+                <td>Linux</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <hr class="sep" />
+
+      <!-- Microkernel -->
+      <details class="expander">
+        <summary>2) Microkernel (Minix concept) 🧬 <span class="chev">▼</span></summary>
+        <div class="content">
+          <p><b>Simple definition:</b> Keep the kernel very small. Move many services (drivers, file systems) to user space.</p>
+
+          <div class="diagram">
+            <div class="diagram-grid">
+              <div class="node" data-pop-title="User-space services 🧑‍🔧"
+                   data-pop-text="Drivers and file systems can run as separate services outside the kernel."
+                   style="border-left: 5px solid var(--os);">
+                <div class="title">🧑‍🔧 Services</div><div class="sub">Drivers, FS in user space</div>
+              </div>
+              <div class="node" data-pop-title="Small kernel ⚙️"
+                   data-pop-text="Kernel does only the most essential tasks: scheduling, memory, messaging."
+                   style="border-left: 5px solid var(--k);">
+                <div class="title">⚙️ Tiny kernel</div><div class="sub">Core basics only</div>
+              </div>
+              <div class="node" data-pop-title="Hardware ⚡"
+                   data-pop-text="Physical devices."
+                   style="border-left: 5px solid var(--hw);">
+                <div class="title">⚡ Hardware</div><div class="sub">Physical parts</div>
+              </div>
+            </div>
+            <div class="pop" data-pop aria-live="polite"></div>
+            <div class="hint">Microkernel = “small core + services outside”. Often safer, sometimes slower.</div>
+          </div>
+
+          <table class="table" aria-label="Microkernel strengths weaknesses">
+            <thead><tr><th>Strengths ✅</th><th>Weaknesses ⚠️</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul class="list">
+                    <li>Smaller trusted kernel</li>
+                    <li>Better isolation (a driver crash may not crash everything)</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="list">
+                    <li>More messaging between parts</li>
+                    <li>Can be slower or more complex</li>
+                  </ul>
+                </td>
+                <td>Minix (classic microkernel example)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <hr class="sep" />
+
+      <!-- Hybrid -->
+      <details class="expander">
+        <summary>3) Hybrid kernel (Windows, macOS) 🧩 <span class="chev">▼</span></summary>
+        <div class="content">
+          <p><b>Simple definition:</b> A mix: tries to keep some microkernel ideas but also keeps performance by placing many services in kernel space.</p>
+
+          <div class="diagram">
+            <div class="diagram-grid">
+              <div class="node" data-pop-title="Apps 😊"
+                   data-pop-text="Apps run in user space."
+                   style="border-left: 5px solid var(--user);">
+                <div class="title">😊 Apps</div><div class="sub">User space</div>
+              </div>
+              <div class="node" data-pop-title="Hybrid kernel ⚙️"
+                   data-pop-text="Core + many drivers and services remain in kernel space for speed."
+                   style="border-left: 5px solid var(--k);">
+                <div class="title">⚙️ Hybrid core</div><div class="sub">Mix of ideas</div>
+              </div>
+              <div class="node" data-pop-title="Some services outside 🧑‍🔧"
+                   data-pop-text="Some parts can be modular or run as services, depending on OS design."
+                   style="border-left: 5px solid var(--os);">
+                <div class="title">🧑‍🔧 Extra services</div><div class="sub">Varies by OS</div>
+              </div>
+            </div>
+            <div class="pop" data-pop aria-live="polite"></div>
+            <div class="hint">Hybrid = “balance safety + speed” (in practice).</div>
+          </div>
+
+          <table class="table" aria-label="Hybrid strengths weaknesses">
+            <thead><tr><th>Strengths ✅</th><th>Weaknesses ⚠️</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul class="list">
+                    <li>Good performance</li>
+                    <li>Can still be modular</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="list">
+                    <li>Not as small as a microkernel</li>
+                    <li>More complexity in design</li>
+                  </ul>
+                </td>
+                <td>Windows NT kernel (hybrid), macOS XNU (hybrid)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <hr class="sep" />
+
+      <!-- Exokernel -->
+      <details class="expander">
+        <summary>4) Exokernel (concept overview) 🧠✨ <span class="chev">▼</span></summary>
+        <div class="content">
+          <p><b>Simple definition:</b> The kernel gives applications more direct control of hardware resources (with safety rules), and apps build what they need on top.</p>
+
+          <div class="diagram">
+            <div class="diagram-grid">
+              <div class="node" data-pop-title="Apps build libraries 🧰"
+                   data-pop-text="Apps can use special libraries to manage resources more directly."
+                   style="border-left: 5px solid var(--user);">
+                <div class="title">🧰 App libraries</div><div class="sub">Custom control</div>
+              </div>
+              <div class="node" data-pop-title="Exokernel core ⚙️"
+                   data-pop-text="Very small core that securely multiplexes hardware (shares it safely)."
+                   style="border-left: 5px solid var(--k);">
+                <div class="title">⚙️ Tiny exokernel</div><div class="sub">Safety + sharing</div>
+              </div>
+              <div class="node" data-pop-title="Hardware ⚡"
+                   data-pop-text="CPU, memory, devices."
+                   style="border-left: 5px solid var(--hw);">
+                <div class="title">⚡ Hardware</div><div class="sub">Resources</div>
+              </div>
+            </div>
+            <div class="pop" data-pop aria-live="polite"></div>
+            <div class="hint">Exokernel is often discussed as a research / concept idea.</div>
+          </div>
+
+          <table class="table" aria-label="Exokernel strengths weaknesses">
+            <thead><tr><th>Strengths ✅</th><th>Weaknesses ⚠️</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul class="list">
+                    <li>Potentially very efficient</li>
+                    <li>Apps can be more flexible</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="list">
+                    <li>Harder to build and maintain</li>
+                    <li>Not common in everyday PCs</li>
+                  </ul>
+                </td>
+                <td>Conceptual overview (research-style designs)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Different OSs, different kernels (table)</h2>
+      <table class="table" aria-label="Operating system kernel type boot style table">
+        <thead>
+          <tr>
+            <th>Operating System</th>
+            <th>Kernel Type</th>
+            <th>Boot Style (high-level)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Windows</td>
+            <td>Hybrid NT Kernel</td>
+            <td>UEFI/BIOS → Windows Boot Manager → NT kernel + services</td>
+          </tr>
+          <tr>
+            <td>Linux</td>
+            <td>Monolithic Kernel</td>
+            <td>UEFI/BIOS → GRUB (or other) → Linux kernel + init</td>
+          </tr>
+          <tr>
+            <td>macOS</td>
+            <td>XNU Hybrid Kernel</td>
+            <td>Firmware → boot process → XNU kernel + macOS services</td>
+          </tr>
+          <tr>
+            <td>Android</td>
+            <td>Linux Kernel</td>
+            <td>Boot chain → Linux kernel → Android runtime/services</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="btnrow">
+        <a class="btn" href="windows-boot.html">Next: Windows Boot 🪟</a>
+        <a class="btn" href="kernel.html">Back: Kernel ⚙️</a>
+      </div>
+    </section>
+
+    <div class="footer">Kernel design changes how systems are built (and how they boot). Next: Windows Boot 🪟</div>
+  </main>
+
+  <script>
+    window.BC = [
+      {label:"Home", href:"index.html"},
+      {label:"Kernel", href:"kernel.html"},
+      {label:"Kernel Types"}
+    ];
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

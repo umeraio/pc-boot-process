@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boot Journey - Boot Loader</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><div class="logo">🧩</div><div>Boot Journey</div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a data-nav href="index.html">Roadmap</a>
+        <a data-nav href="bios-uefi.html">BIOS/UEFI</a>
+        <a data-nav href="tpm.html">TPM</a>
+        <a data-nav href="bootloader.html">Boot Loader</a>
+        <a data-nav href="kernel.html">Kernel</a>
+        <a data-nav href="kernel-types.html">Kernel Types</a>
+        <a data-nav href="os-basics.html">OS Basics</a>
+        <a data-nav href="windows-boot.html">Windows Boot</a>
+        <a data-nav href="glossary.html">Glossary</a>
+        <a data-nav href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb" data-breadcrumb></div>
+
+    <section class="card">
+      <p class="kicker">Loader stage 🚀</p>
+      <h1 class="h1">Boot Loader (what it is and why it exists)</h1>
+      <p class="lead">
+        Firmware can’t load the whole OS by itself. So it hands control to a boot loader.
+        The boot loader’s main job is to load the <b>kernel</b> and start it.
+      </p>
+
+      <div class="grid">
+        <div class="col-6">
+          <h2 class="h2">What a boot loader is</h2>
+          <ul class="list">
+            <li>🚀 A small program that starts your OS</li>
+            <li>Loads the kernel into memory</li>
+            <li>Passes important info (disk, boot options, etc.)</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <h2 class="h2">Why it is needed</h2>
+          <ul class="list">
+            <li>Firmware is small and general-purpose</li>
+            <li>OS kernels are bigger and need setup</li>
+            <li>Sometimes you choose between multiple OS options</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Control transfer flowchart (click boxes)</h2>
+      <div class="diagram">
+        <div class="diagram-grid">
+          <div class="node" data-pop-title="Firmware 🧠 → Boot entry"
+               data-pop-text="UEFI finds a boot entry (a boot file on disk) and starts it."
+               style="border-left: 5px solid var(--fw);">
+            <div class="title">🧠 Firmware</div>
+            <div class="sub">Finds boot option</div>
+          </div>
+
+          <div class="node" data-pop-title="Boot Loader 🚀 → Kernel ⚙️"
+               data-pop-text="Boot loader loads the kernel into RAM and jumps to the kernel start point."
+               style="border-left: 5px solid var(--bl);">
+            <div class="title">🚀 Boot Loader</div>
+            <div class="sub">Loads kernel</div>
+          </div>
+
+          <div class="node" data-pop-title="Kernel ⚙️ → OS services 🖥️"
+               data-pop-text="Kernel starts drivers and system services so the OS becomes usable."
+               style="border-left: 5px solid var(--k);">
+            <div class="title">⚙️ Kernel</div>
+            <div class="sub">Starts core control</div>
+          </div>
+        </div>
+        <div class="pop" data-pop aria-live="polite"></div>
+        <div class="hint">This is the main “handover chain” in booting.</div>
+      </div>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Examples: Windows vs Linux</h2>
+      <table class="table" aria-label="Boot loader examples comparison">
+        <thead>
+          <tr>
+            <th>System</th>
+            <th>Boot loader example</th>
+            <th>What it typically does</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Windows</td>
+            <td>Windows Boot Manager</td>
+            <td>Reads boot settings, loads Windows kernel parts</td>
+          </tr>
+          <tr>
+            <td>Linux</td>
+            <td>GRUB</td>
+            <td>Shows menu, loads Linux kernel + init system</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="sep" />
+
+      <details class="expander">
+        <summary>Click to learn more (easy analogy) <span class="chev">▼</span></summary>
+        <div class="content">
+          Boot loader is like a “starter key”:
+          <ul class="list">
+            <li>Firmware is the car’s electronics doing basic checks.</li>
+            <li>Boot loader is turning the key to start the engine.</li>
+            <li>Kernel is the engine running and controlling everything.</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="btnrow">
+        <a class="btn" href="kernel.html">Next: Kernel ⚙️</a>
+        <a class="btn" href="tpm.html">Back: TPM 🔒</a>
+      </div>
+    </section>
+
+    <div class="footer">Boot loader loads the kernel. Next: Kernel ⚙️ (core focus)</div>
+  </main>
+
+  <script>
+    window.BC = [
+      {label:"Home", href:"index.html"},
+      {label:"BIOS / UEFI", href:"bios-uefi.html"},
+      {label:"TPM", href:"tpm.html"},
+      {label:"Boot Loader"}
+    ];
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

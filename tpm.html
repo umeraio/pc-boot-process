@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boot Journey - TPM</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><div class="logo">🧩</div><div>Boot Journey</div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a data-nav href="index.html">Roadmap</a>
+        <a data-nav href="bios-uefi.html">BIOS/UEFI</a>
+        <a data-nav href="tpm.html">TPM</a>
+        <a data-nav href="bootloader.html">Boot Loader</a>
+        <a data-nav href="kernel.html">Kernel</a>
+        <a data-nav href="kernel-types.html">Kernel Types</a>
+        <a data-nav href="os-basics.html">OS Basics</a>
+        <a data-nav href="windows-boot.html">Windows Boot</a>
+        <a data-nav href="glossary.html">Glossary</a>
+        <a data-nav href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb" data-breadcrumb></div>
+
+    <section class="card">
+      <p class="kicker">Security chip 🔒</p>
+      <h1 class="h1">TPM (Trusted Platform Module) in simple words</h1>
+      <p class="lead">
+        A TPM is a small security chip that can safely store secrets (like encryption keys) and prove the computer is trusted.
+        Think of it like a locked safe built into the motherboard.
+      </p>
+
+      <div class="badges">
+        <span class="tag"><span class="dot fw"></span>Firmware</span>
+        <span class="tag"><span class="dot os"></span>Operating System</span>
+      </div>
+
+      <hr class="sep" />
+
+      <div class="grid">
+        <div class="card col-6" style="background: rgba(255,255,255,0.05);">
+          <h2 class="h2">What TPM is</h2>
+          <ul class="list">
+            <li>🔒 A secure chip (or secure part inside CPU)</li>
+            <li>Stores encryption keys safely</li>
+            <li>Can “measure” startup parts and remember what happened</li>
+          </ul>
+          <p style="color: var(--muted); margin: 10px 0 0;">
+            Hover: <span class="has-tip" data-tip="A secret code that locks and unlocks encrypted data.">encryption key</span>,
+            <span class="has-tip" data-tip="A record of what software ran during startup, used to detect tampering.">startup measurement</span>.
+          </p>
+        </div>
+
+        <div class="card col-6" style="background: rgba(255,255,255,0.05);">
+          <h2 class="h2">Why TPM exists</h2>
+          <ul class="list">
+            <li>Stops thieves from easily reading your disk</li>
+            <li>Helps detect “fake” or changed boot parts</li>
+            <li>Makes it harder for malware to steal keys</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Real-world examples</h2>
+      <ul class="list">
+        <li>🪟 Windows uses TPM for security features</li>
+        <li>🧊 BitLocker (disk encryption) can store keys in TPM</li>
+        <li>✅ Secure Boot + TPM can reduce boot tampering</li>
+      </ul>
+
+      <hr class="sep" />
+
+      <h2 class="h2">Security flow diagram (click the boxes)</h2>
+      <div class="diagram" aria-label="TPM security flow diagram">
+        <div class="diagram-grid">
+          <div class="node" data-pop-title="1) Firmware starts 🧠"
+               data-pop-text="UEFI runs first and can check signed boot files (Secure Boot)."
+               style="border-left: 5px solid var(--fw);">
+            <div class="title">🧠 Firmware</div>
+            <div class="sub">Starts first</div>
+          </div>
+
+          <div class="node" data-pop-title="2) TPM stores secrets 🔒"
+               data-pop-text="TPM can hold encryption keys and keep them safer than normal memory."
+               style="border-left: 5px solid #fbbf24;">
+            <div class="title">🔒 TPM</div>
+            <div class="sub">Locked safe</div>
+          </div>
+
+          <div class="node" data-pop-title="3) OS uses keys 🖥️"
+               data-pop-text="If everything looks trusted, the OS can unlock encrypted disk or enable protections."
+               style="border-left: 5px solid var(--os);">
+            <div class="title">🖥️ OS</div>
+            <div class="sub">Uses TPM safely</div>
+          </div>
+        </div>
+
+        <div class="pop" data-pop aria-live="polite"></div>
+        <div class="hint">If boot parts change unexpectedly, TPM-backed checks may refuse to unlock automatically.</div>
+      </div>
+
+      <hr class="sep" />
+
+      <details class="expander">
+        <summary>Click to learn more (simple example) <span class="chev">▼</span></summary>
+        <div class="content">
+          <p><b>Example:</b> your laptop is stolen.</p>
+          <ul class="list">
+            <li>Your drive is encrypted.</li>
+            <li>The thief removes the drive and plugs it into another PC.</li>
+            <li>Without the right key (protected by TPM + your login), the data looks like random noise.</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="btnrow">
+        <a class="btn" href="bootloader.html">Next: Boot Loader 🚀</a>
+        <a class="btn" href="bios-uefi.html">Back: BIOS/UEFI 🧠</a>
+      </div>
+    </section>
+
+    <div class="footer">TPM helps protect secrets during and after boot. Next: Boot Loader 🚀</div>
+  </main>
+
+  <script>
+    window.BC = [
+      {label:"Home", href:"index.html"},
+      {label:"BIOS / UEFI", href:"bios-uefi.html"},
+      {label:"TPM"}
+    ];
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

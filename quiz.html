@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boot Journey - Quiz</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><div class="logo">🧩</div><div>Boot Journey</div></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a data-nav href="index.html">Roadmap</a>
+        <a data-nav href="bios-uefi.html">BIOS/UEFI</a>
+        <a data-nav href="tpm.html">TPM</a>
+        <a data-nav href="bootloader.html">Boot Loader</a>
+        <a data-nav href="kernel.html">Kernel</a>
+        <a data-nav href="kernel-types.html">Kernel Types</a>
+        <a data-nav href="os-basics.html">OS Basics</a>
+        <a data-nav href="windows-boot.html">Windows Boot</a>
+        <a data-nav href="glossary.html">Glossary</a>
+        <a data-nav href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb" data-breadcrumb></div>
+
+    <section class="card">
+      <p class="kicker">Check your understanding ✅</p>
+      <h1 class="h1">Mini quiz (beginner-friendly)</h1>
+      <p class="lead">Pick an answer, then press “Check”.</p>
+
+      <hr class="sep" />
+
+      <div class="grid">
+        <div class="col-6">
+          <div class="card" style="background: rgba(255,255,255,0.04);">
+            <h2 class="h2">1) What runs first after power-on?</h2>
+            <label><input type="radio" name="q1" value="a"> The desktop UI</label><br />
+            <label><input type="radio" name="q1" value="b"> BIOS/UEFI firmware</label><br />
+            <label><input type="radio" name="q1" value="c"> A web browser</label>
+            <div class="btnrow">
+              <button class="small" onclick="check('q1','b','Firmware runs first 🧠')">Check</button>
+            </div>
+            <p id="q1r" style="color: var(--muted); margin:0;"></p>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card" style="background: rgba(255,255,255,0.04);">
+            <h2 class="h2">2) What is the boot loader’s main job?</h2>
+            <label><input type="radio" name="q2" value="a"> Load the kernel into memory</label><br />
+            <label><input type="radio" name="q2" value="b"> Charge the battery</label><br />
+            <label><input type="radio" name="q2" value="c"> Draw icons on screen</label>
+            <div class="btnrow">
+              <button class="small" onclick="check('q2','a','Boot loader loads the kernel 🚀')">Check</button>
+            </div>
+            <p id="q2r" style="color: var(--muted); margin:0;"></p>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card" style="background: rgba(255,255,255,0.04);">
+            <h2 class="h2">3) What does the kernel control?</h2>
+            <label><input type="radio" name="q3" value="a"> CPU, memory, devices, processes</label><br />
+            <label><input type="radio" name="q3" value="b"> Only the wallpaper</label><br />
+            <label><input type="radio" name="q3" value="c"> Only the mouse pointer</label>
+            <div class="btnrow">
+              <button class="small" onclick="check('q3','a','Kernel is the core manager ⚙️')">Check</button>
+            </div>
+            <p id="q3r" style="color: var(--muted); margin:0;"></p>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card" style="background: rgba(255,255,255,0.04);">
+            <h2 class="h2">4) What is TPM mainly used for?</h2>
+            <label><input type="radio" name="q4" value="a"> Storing and protecting keys 🔒</label><br />
+            <label><input type="radio" name="q4" value="b"> Making the screen brighter</label><br />
+            <label><input type="radio" name="q4" value="c"> Cooling the CPU</label>
+            <div class="btnrow">
+              <button class="small" onclick="check('q4','a','TPM helps protect secrets 🔒')">Check</button>
+            </div>
+            <p id="q4r" style="color: var(--muted); margin:0;"></p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <div class="card" style="background: rgba(255,255,255,0.04);">
+        <h2 class="h2">Bonus: Put the boot chain in order</h2>
+        <p style="color: var(--muted); margin-top:0;">Click the correct order:</p>
+        <div class="btnrow">
+          <button class="small" onclick="bonus(false)">🖥️ OS → ⚙️ Kernel → 🚀 Boot Loader → 🧠 UEFI</button>
+          <button class="small" onclick="bonus(true)">⚡ Power → 🧠 BIOS/UEFI → 🚀 Boot Loader → ⚙️ Kernel → 🖥️ OS</button>
+        </div>
+        <p id="bonus" style="color: var(--muted); margin:0;"></p>
+      </div>
+
+      <div class="btnrow">
+        <a class="btn" href="index.html">Back: Roadmap</a>
+        <a class="btn" href="glossary.html">Review: Glossary 📚</a>
+      </div>
+    </section>
+
+    <div class="footer">If you got 3/4 correct, you understand the basics very well. ✅</div>
+  </main>
+
+  <script>
+    window.BC = [
+      {label:"Home", href:"index.html"},
+      {label:"Quiz"}
+    ];
+
+    function check(q, correct, msg){
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      const out = document.getElementById(q+"r");
+      if(!selected){
+        out.textContent = "Pick an option first 🙂";
+        return;
+      }
+      if(selected.value === correct){
+        out.textContent = "✅ Correct! " + msg;
+      }else{
+        out.textContent = "❌ Not quite. Hint: review the roadmap boxes on the homepage.";
+      }
+    }
+
+    function bonus(ok){
+      const out = document.getElementById("bonus");
+      out.textContent = ok ? "✅ Correct order! You nailed the boot chain." : "❌ Wrong order. Remember: firmware starts early, OS is later.";
+    }
+  </script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
